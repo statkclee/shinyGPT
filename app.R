@@ -86,14 +86,14 @@ server <- function(input, output) {
                                sep = " ")
     
     output$textPromptOutput <- renderText({   # <- This is new
-      image_gen_prompt
+      cat(glue::glue("\n\n'{image_gen_prompt}'"))
     })
     
     gen_filename <- generate_random_filename()
     
     draw_img(
-      image_gen_prompt,
-      ko2en = TRUE,
+      prompt = image_gen_prompt,
+      ko2en = FALSE,
       n = 1L,
       size = "512x512",
       type = "file",
