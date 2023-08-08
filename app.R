@@ -8,6 +8,8 @@ generate_random_filename <- function() {
     paste0("_", sample(1:1e5, 1)) 
 }
 
+api_key <- read_lines("apikey.txt")
+
 ui <- fluidPage(
   # Set app title and theme
   title = "Image Generator App",
@@ -98,7 +100,8 @@ server <- function(input, output) {
       format = "png",
       path = "www",
       fname = gen_filename,
-      openai_api_key = Sys.getenv("OPENAI_API_KEY")
+      # openai_api_key = Sys.getenv("OPENAI_API_KEY")
+      openai_api_key = api_key
     )
 
     # Display the image using renderUI
